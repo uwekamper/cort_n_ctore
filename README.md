@@ -32,7 +32,7 @@ GET /parts/?[general=*][specific=*][value=*][place=*][package=*]
 
 Description of Datafields
 ===
-
+´´
 Name		unknown.
 Type
    General	example: Transistor
@@ -50,3 +50,4 @@ Place
 Depth
 Restbestand
 Note
+´´
