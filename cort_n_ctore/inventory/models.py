@@ -10,7 +10,8 @@ class Place(models.Model):
 	depth = models.IntegerField()
 	
 	def __unicode__(self):
-		return self.name
+		return u'%s, module: %s, row: %d, col: %d, depth: %d' % (self.room, self.module, 
+			self.row, self.column, self.depth)
 	
 
 class Part(models.Model):
