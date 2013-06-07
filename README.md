@@ -33,20 +33,21 @@ GET /parts/?[general=*][specific=*][value=*][place=*][package=*]
 Description of Datafields
 ===
 
-Name		unknown.
-Type
-   General	example: Transistor
-   Specific	example: NPN
-Value
-   From		this container contains parts from ...
-   To		... to this value
-   SI-Unit	Unit of Value
-Package		example: SMD, Wall-mount, PIN-Mount
-Place	
-   Room		c-lab, hardwarestorage, robolab...
-   Modul	Char describing which container
-   Row		Row of Modul
-   Col		Column of Modul
-Depth
-Restbestand
-Note
+    Name                unknown.
+    Type
+       General          example: Transistor
+       Specific         example: NPN
+    Value
+       From             this container contains parts from ...
+       To               ... to this value
+       SI-Unit          Unit of Value 
+    Package             example: SMD, Wall-mount, PIN-Mount
+    Place        
+       Room             c-lab, hardwarestorage, robolab...
+       Modul            Char describing which container
+       Row              Row of Modul
+       Col              Column of Modul
+       Depth            some boxes inside of modules are further separated. 
+    Restbestand         approximated amount of parts in this container
+    Note                comment. further information
+
