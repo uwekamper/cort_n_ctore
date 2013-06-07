@@ -28,3 +28,25 @@ GET /types/<GENERAL>
 GET /parts/?[general=*][specific=*][value=*][place=*][package=*]
 
   List of Parts that match the filter
+
+
+Description of Datafields
+===
+
+Name		unknown.
+Type
+   General	example: Transistor
+   Specific	example: NPN
+Value
+   From		this container contains parts from ...
+   To		... to this value
+   SI-Unit	Unit of Value
+Package		example: SMD, Wall-mount, PIN-Mount
+Place	
+   Room		c-lab, hardwarestorage, robolab...
+   Modul	Char describing which container
+   Row		Row of Modul
+   Col		Column of Modul
+Depth
+Restbestand
+Note
