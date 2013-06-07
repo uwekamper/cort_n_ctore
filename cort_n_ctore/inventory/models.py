@@ -9,6 +9,9 @@ class Place(models.Model):
 	column = models.IntegerField()
 	depth = models.IntegerField()
 	
+	def __unicode__(self):
+		return self.name
+	
 
 class Part(models.Model):
 	name = models.CharField(max_length=255)
@@ -16,9 +19,13 @@ class Part(models.Model):
 	specific_type = models.CharField(max_length=255)
 	from_value = models.FloatField()
 	to_value = models.FloatField()
+	unit = models.CharField(max_length=255, default='')
 	package = models.CharField(max_length=255)
 	place = models.ForeignKey(Place)
 	note = models.TextField()
 	remaining = models.IntegerField()
+	
+	def __unicode__(self):
+		return self.name
 
 	
