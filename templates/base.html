@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen">
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    {% block body %}
+
+    <div class="container" id="container">
+    {% block container %}
+    {% endblock %}
+    </div>
+
+    {% endblock %}
+
+    {% block js_templates %}{% endblock %}
+
+    <script src="{% static 'js/jquery-2.0.2.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/underscore.js' %}"></script>
+    <script src="{% static 'js/backbone.js' %}"></script>
+    <script src="{% static 'js/mustache.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

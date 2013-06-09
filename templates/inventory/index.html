@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block container %}
+    <div class="row">
+        <div class="span2">Logo</div>
+        <div class="span8">c-base c_ort and c_tore</div>
+        <div class="span2"><a href="#">Browse places</a></div>
+    </div>
+    <div class="row">
+        <div class="span10 offset2" id="searchform">
+            <form class="form-search">
+                <input type="text" id="search" class="input-medium search-query" />
+                <button type="submit" id="searchbtn" class="btn btn-primary" >Go!</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12" id="searchresults">
+        <table id="searchresultstable" class="table">
+
+        </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_templates %}
+    <script type="text/template" id="partTpl">
+        <td><%= name %></td>
+    </script>
+{% endblock %}

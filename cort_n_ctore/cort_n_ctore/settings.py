@@ -109,6 +109,7 @@ ROOT_URLCONF = 'cort_n_ctore.urls'
 WSGI_APPLICATION = 'cort_n_ctore.wsgi.application'
 
 TEMPLATE_DIRS = (
+    '/Users/uk/workspace/cort_n_ctore/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

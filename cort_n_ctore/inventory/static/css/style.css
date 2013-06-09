@@ -1,0 +1,16 @@
+
+#searchform {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#search {
+    width:500px;
+    height:50px;
+    font-size: 30px;
+}
+
+#searchbtn {
+    height: 60px;
+    font-size: 30px;
+}

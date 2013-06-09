@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from django.shortcuts import render
 
 from inventory.models import Part, Place
 from inventory.serializers import PartSerializer, PlaceSerializer
@@ -16,3 +17,10 @@ class PlaceViewSet(viewsets.ModelViewSet):
     """
     serializer_class = PlaceSerializer
     queryset = Place.objects.all()
+
+def index(request):
+    context = {}
+    return render(request, 'inventory/index.html', context)
+
+
+
