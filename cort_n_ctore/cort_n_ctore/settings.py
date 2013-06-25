@@ -83,6 +83,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'eekvpf^0(x#u#ddta@lj9pwd%8$%zw)0e7(@lg9_8a-ea6*o6+'
 
@@ -128,6 +130,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'rest_framework',
+    #'compressor',
     # our apps
 	'inventory',
 )
@@ -160,3 +163,8 @@ LOGGING = {
         },
     }
 }
+
+
+COMPRESS_PRECOMPILERS = (
+    ('text/coffeescript', 'coffee --js'),
+)

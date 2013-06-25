@@ -5,7 +5,7 @@ var Part = Backbone.Model.extend({
     },
 
     initialize: function(){
-        // console.log('This Part model has been initialized.');
+        console.log('This Part model has been initialized.');
     }
 });
 
@@ -28,23 +28,27 @@ var Place = Backbone.Model.extend({
 
 var PartView = Backbone.View.extend({
     tagName: 'tr',
-    partTpl: _.template($('#partTpl').html()),
+    partTpl: $('#partTpl').html(),
 
     events: {
-        //'click label': 'edit'
+        'click .editBtn': 'edit'
     },
 
     initialize: function() {
       this.listenTo(this.model, "change", this.render);
     },
     render: function() {
-        this.$el.html( this.partTpl( this.model.toJSON() ) );
+        this.$el.html( Mustache.render(this.partTpl, this.model.toJSON()) );
         return this;
+    },
+    edit: function() {
+        router.navigate('#edit/' + parts.indexOf(this.model), true);
     }
 });
 
 var PartsListView = Backbone.View.extend({
     tagName: 'tbody',
+
     itemViews: {},
 
     initialize: function(options) {
@@ -53,6 +57,7 @@ var PartsListView = Backbone.View.extend({
       this.listenTo(this.collection, "remove", this.removeItem);
       this.listenTo(this.collection, "reset", this.render);
     },
+
     render: function(){
         this.$el.empty();
         this.collection.each(this.renderItem, this);
@@ -69,9 +74,45 @@ var PartsListView = Backbone.View.extend({
 // pass array of models on collection instantiation
 var parts = new PartsCollection();
 
+var PartEditView = Backbone.View.extend({
+    tagName: 'div',
 
-console.log(parts);
+    initialize: function(options) {
+        this.part = options.part;
+        this.listenTo(this.collection, "reset", this.render);
+    },
 
-var partslistview = new PartsListView({collection: parts});
-$('#searchresultstable').append(partslistview.render().el);
-parts.fetch({ reset: true });
+    render: function() {
+        this.$el.append();
+        return this;
+    }
+});
+
+var PartsRouter = Backbone.Router.extend({
+    routes: {
+        "edit/:idx": "editRoute",
+        "": "defaultRoute"
+    },
+
+    defaultRoute: function() {
+        var partslistview = new PartsListView({collection: parts});
+        $('#searchresultstable').append(partslistview.render().el);
+        parts.fetch({ reset: true });
+    },
+
+    editRoute: function() {
+        idx = 1
+        var part = parts.get(idx);
+        var partEditView = new PartEditView({model: part});
+        $('#searchresultstable').empty();
+        $('#searchresultstable').append(partEditView.render().el);
+        alert("vla");
+    }
+
+});
+
+router = new PartsRouter();
+
+$(document).ready(function () {
+     Backbone.history.start();
+});

@@ -52,7 +52,7 @@ def restart():
 
 
 def deploy():
-    create_environment()
+    # create_environment()
     copy_project()
     init_project()
-    # restart()
+    restart()

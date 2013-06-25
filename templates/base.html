@@ -1,6 +1,5 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
   <head>
     <title>Bootstrap 101 Template</title>
@@ -22,12 +21,16 @@
 
     {% block js_templates %}{% endblock %}
 
-    <script src="{% static 'js/jquery-2.0.2.js' %}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
     <script src="{% static 'js/underscore.js' %}"></script>
+    <script src="{% static 'js/jquery-2.0.2.js' %}"></script>
     <script src="{% static 'js/backbone.js' %}"></script>
     <script src="{% static 'js/mustache.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+     <!--<script type="text/javascript" src="{% static 'js/script.js' %}"></script>-->
+    <script type="text/javascript" src="{% static 'coffee/test.js' %}"></script>
+
     {% block extra_js %}{% endblock %}
   </body>
 </html>

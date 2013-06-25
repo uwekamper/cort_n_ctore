@@ -4,6 +4,22 @@ from django.core.management.base import BaseCommand, CommandError
 
 from inventory.models import Part, Place
 
+MAPPING = [
+	{'path': '*/egg',
+	 ''},
+]
+
+def do_mapping(mapping=MAPPING):
+	pass
+
+def add_list(model, attribute, list):
+	attr = getattr(model, attribute)
+	for element in list:
+		attr.add(element)
+
+def add_single(model, attribute, value):
+	pass
+		
 class Command(BaseCommand):
     args = '<filename>'
     help = 'Closes the specified poll for voting'

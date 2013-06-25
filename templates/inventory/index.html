@@ -16,15 +16,35 @@
     </div>
     <div class="row">
         <div class="span12" id="searchresults">
-        <table id="searchresultstable" class="table">
-
+        <table id="searchresultstable" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>General type</th>
+                <th>Specific type</th>
+                <th>Value</th>
+                <th>Remaining</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
         </table>
         </div>
     </div>
 {% endblock %}
 
 {% block js_templates %}
-    <script type="text/template" id="partTpl">
-        <td><%= name %></td>
-    </script>
+{% verbatim %}
+<script type="text/template" id="partTpl">
+    <td>{{name}}</td>
+    <td>{{general_type}}</td>
+    <td>{{specific_type}}</td>
+    <td>{{from_value}} – {{to_value}} {{unit}}</td>
+    <td>{{remaining}}</td>
+    <td><a class="btn editBtn">Edit</a></td>
+</script>
+
+<script type="text/template" id="partEditTpl">
+    {{name}}
+</script>
+{% endverbatim %}
 {% endblock %}

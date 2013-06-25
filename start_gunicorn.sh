@@ -10,6 +10,7 @@ cd /home/uk/cort_n_ctore/cort_n_ctore
 source ../bin/activate
 test -d $LOGDIR || mkdir -p $LOGDIR
 exec ../bin/gunicorn_django -w $NUM_WORKERS \
+	--pid /var/run/cort_n_ctore.pid \
     --user=$USER --group=$GROUP --log-level=debug \
     --log-file=$LOGFILE 2>>$LOGFILE \
     --pythonpath=/home/uk/cort_n_ctore/cort_n_ctore \
