@@ -7,6 +7,16 @@ class Place(models.Model):
     parent = models.ForeignKey('Place', blank=True, null=True, related_name="children")
     type = models.CharField(max_length=255)
 
+    def _get_path(self):
+        result = ''
+        if self.parent:
+            result = self.parent._get_path() + '/'
+
+        result += self.name
+        return result
+
+    path = property(_get_path)
+
     def __unicode__(self):
         result = ''
         if self.parent:

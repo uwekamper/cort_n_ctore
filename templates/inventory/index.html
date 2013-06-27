@@ -23,6 +23,7 @@
                 <th>General type</th>
                 <th>Specific type</th>
                 <th>Value</th>
+                <th>Place</th>
                 <th>Remaining</th>
                 <th>Edit</th>
             </tr>
@@ -39,12 +40,75 @@
     <td>{{general_type}}</td>
     <td>{{specific_type}}</td>
     <td>{{from_value}} – {{to_value}} {{unit}}</td>
+    <td>{{place.path}}</td>
     <td>{{remaining}}</td>
     <td><a class="btn editBtn">Edit</a></td>
 </script>
 
 <script type="text/template" id="partEditTpl">
-    {{name}}
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="inputName">Name</label>
+            <div class="controls">
+              <input type="text" id="inputName" placeholder="Name" name="name"
+                     value="{{name}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputName">Place</label>
+            <div class="controls">
+              <input type="text" id="inputPlace" placeholder="Name" name="place"
+                     value="{{place.path}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputGeneralType">General type</label>
+            <div class="controls">
+              <input type="text" id="inputGeneralType" placeholder="General type" name="general-type"
+                     value="{{general_type}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputSpecificType">Specific type</label>
+            <div class="controls">
+              <input type="text" id="inputSpecificType" placeholder="Name" name="specific-type"
+                     value="{{specific_type}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputFromValue">From value</label>
+            <div class="controls">
+              <input type="text" id="inputFromValue" placeholder="Value" name="from-value"
+                     value="{{from_value}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputToValue">To value</label>
+            <div class="controls">
+              <input type="text" id="inputToValue" placeholder="Value" name="to-value"
+                     value="{{to_value}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputUnit">Unit</label>
+            <div class="controls">
+              <input type="text" id="inputUnit" placeholder="Enter unit" name="unit"
+                     value="{{unit}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputPackage">Package</label>
+            <div class="controls">
+              <input type="text" id="inputPackage" placeholder="Enter package type" name="package"
+                     value="{{package}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
 </script>
 {% endverbatim %}
 {% endblock %}

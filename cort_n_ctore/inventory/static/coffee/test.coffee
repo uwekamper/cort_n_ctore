@@ -1,7 +1,12 @@
 app = this
-
 models = {}
 
+
+class models.Place extends Backbone.Model
+  urlRoot: '/inventory/places'
+
+  initialize: (options) ->
+    console.log ''
 
 class models.Part extends Backbone.Model
   defaults:
@@ -14,7 +19,6 @@ class models.Part extends Backbone.Model
 class models.PartsCollection extends Backbone.Collection
   model: models.Part
   url: '/inventory/parts/'
-
 
 class models.Place extends Backbone.Model
   defaults:
@@ -32,8 +36,8 @@ views = {}
 class views.PartView extends Backbone.View
   tagName: 'tr'
   partTpl: jQuery('#partTpl').html()
-#  events:
-#    'click .editBtn': 'edit'
+  events:
+    'click .editBtn': 'edit'
 
   initialize: (options) ->
     this.listenTo(this.model, "change", this.render)
@@ -42,8 +46,8 @@ class views.PartView extends Backbone.View
     this.$el.html( Mustache.render(this.partTpl, this.model.toJSON()) )
     return this
 
-#  edit: ->
-#    router.navigate('#edit/' + parts.indexOf(this.model), true)
+  edit: ->
+    app.main_route.navigate('#edit/' + this.model.id, true)
 
 class views.PartsListView extends Backbone.View
   tagName: 'tbody'
@@ -69,13 +73,13 @@ class views.PartsListView extends Backbone.View
 
 class views.PartEditView extends Backbone.View
   tagName: 'div'
+  partEditTpl: jQuery('#partEditTpl').html()
 
   initialize: (options) ->
     this.part = options.part
-    this.listenTo(this.collection, "reset", this.render)
 
   render: ->
-    this.$el.append()
+    this.$el.html( Mustache.render(this.partEditTpl, this.part.toJSON()) )
     return this
 
 app.views = views
@@ -85,12 +89,19 @@ routers = {}
 class routers.PartsRouter extends Backbone.Router
   routes:
     '': 'defaultRoute'
+    'edit/:id': 'editPart'
 
   defaultRoute: ->
-    console.log('blaaah')
     partslistview = new views.PartsListView {collection: app.parts}
     jQuery('#searchresultstable').append(partslistview.render().el)
     parts.fetch({ reset: true })
+
+  editPart: (id) ->
+    console.log('edit part')
+    part = app.parts.get(id)
+    parteditview = new views.PartEditView {part: part}
+    jQuery('#searchresultstable').empty()
+    jQuery('#searchresultstable').append(parteditview.render().el)
 
 app.models = models
 app.views = views
